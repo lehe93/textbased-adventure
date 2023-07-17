@@ -31,7 +31,7 @@ class character:
         self.level = int(1) 
         self.offhand = "bare hand"
         self.defhand = "bare hand"
-        self.position = "Entry"
+        self.position = Entry
         
         if self.exp >= 500:
             self.level += 1
@@ -78,7 +78,8 @@ char1 = character("none")
 
 
 #Nachfolgend kommen wichtige Prüf-Funktionen, wenn Räume betreten werden. 
-#Die Check-Funktionen müssen noch allgemeingültig werden, sodass sie jederzeit für alle Räume verfügbar sind. 
+#Die Check-Funktion für items ist allgemeingültig und soweit fertig. Muss später noch implementiert werden. 
+#Die Check-Funktion für Gegner muss noch allgemeingültig werden.  
 #check_enemy dient der Überprüfung, ob es im aktuellen Raum Monster gibt. 
 def check_enemy(user_answer):
     if user_answer == "C":
@@ -96,24 +97,24 @@ def check_enemy(user_answer):
             print("You fight the enemy until it is dead. ")
             B.monster = "none"
 
-#check_items dient der Überprfung, ob es im aktuellen Raum Items gibt, bzw. ob diese herumliegen. 
+#check_items dient der Überprüfung, ob es im aktuellen Raum Items gibt, bzw. ob diese herumliegen. 
 def check_items(item_input):
     if item_input == "check items":
-        if A.items == "none":
+        if char1.position.items == "none":
             print("There are no items on the floor.")
-        elif A.items != "none":
-            print("As you observe the room for some loot, you find a " + A.items + ".")
+        elif char1.position.items != "none":
+            print("As you observe the room for some loot, you find a " + char1.position.items + ".")
             print("Do you want to take it? (Y / N)")
             select_counter = 0
 
             while select_counter < 1:
                 choice = input()
                 if choice == "Y":
-                    print("You take the " + A.items + " with you.")
+                    print("You take the " + char1.position.items + " with you.")
                     select_counter += 1
-                    A.items = "none"
+                    char1.position.items = "none"
                 elif choice == "N":
-                    print("You let the " + A.items + "in the room.")
+                    print("You let the " + char1.position.items + "in the room.")
                     select_counter += 1
                 else:
                     print("Please enter a valid response.")
