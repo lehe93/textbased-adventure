@@ -1,4 +1,3 @@
-import random
 
 #Zuerst werden alle relevanten Klassen angelegt, um später einzelne Objekte diesbezüglich zu erstellen. 
 
@@ -32,6 +31,7 @@ class character:
         self.offhand = "bare hand"
         self.defhand = "bare hand"
         self.position = Entry
+        self.prepos = []
         
         if self.exp >= 500:
             self.level += 1
@@ -73,29 +73,20 @@ Y = room("Y", "none", "none", "X", "W", "Z")
 Z = room("Z", "none", "dark mage", "none", "none", Y)
 
 
-monster = enemy("Lettered Guardian", 50, 4, 5, 1000)
+endboss = enemy("Lettered Guardian", 50, 4, 5, 1000)
 char1 = character("none")
 
 
 #Nachfolgend kommen wichtige Prüf-Funktionen, wenn Räume betreten werden. 
 #Die Check-Funktion für items ist allgemeingültig und soweit fertig. Muss später noch implementiert werden. 
 #Die Check-Funktion für Gegner muss noch allgemeingültig werden.  
-#check_enemy dient der Überprüfung, ob es im aktuellen Raum Monster gibt. 
-def check_enemy(user_answer):
-    if user_answer == "C":
-        char1.position = C
-        if C.monster == "none":
-            print("There is no enemy in the room.")
-        elif C.monster != "none":
-            print("As you enter the room, you are attacked by a " + C.monster + ".")
-    elif user_answer == "B":
-        char1.position = B
-        if B.monster == "none":
-            print("There is no enemy in the room.")
-        elif B.monster != "none":
-            print("As you enter the room, you are attacked by a " + B.monster + ".")
-            print("You fight the enemy until it is dead. ")
-            B.monster = "none"
+#check_enemy dient der Überprüfung, ob es im aktuellen Raum Monster gibt. Diese Funktion soll beim jedem Betreten eines Raums durchgeführt werden. 
+def check_enemy():
+    if char1.position.monster == "none":
+        print("There is no enemy in the current room.")
+    elif char1.position.monster != "none":
+        print("As you enter the room, you are attacked by a " + char1.position.monster + ".")
+
 
 #check_items dient der Überprüfung, ob es im aktuellen Raum Items gibt, bzw. ob diese herumliegen. 
 def check_items(item_input):
@@ -119,7 +110,30 @@ def check_items(item_input):
                 else:
                     print("Please enter a valid response.")
 
+#Die fight-Funktion wird immer dann aufgerufen, wenn der Charakter einen neuen Raum betritt und dort ein Monster ist. 
+#Alternativ kann er Charakter in den vorherigen Raum rennen. 
 
+def fight(fight_enemy):
+    if char1.position.monster != "none":
+        print("Do you want to fight the monster? (Y / N)")
+        fight_counter = 0
+        fight_check = input()
+        while fight_counter < 1:
+            if fight_check == "Y":
+                print("You attack your enemy with your " + char1.offhand + " while dealing " + str(char1.attack) + " damage per round.")
+                print("The " + char1.position.monster + " attacks you with 1 attackpoint per round.")
+                while char1.health > 0 or fight_enemy.health > 0:
+                    x.health -= char1.attack
+                    char1.health -= fight_enemy.attack
+                    if char1.health == 0:
+                        print("You died in the fight versus the " + char1.position.monster + ".")
+                        print("You have " + str(char1.health) + " health points left.")
+                    elif fight_enemy.health == 0:
+                        print("You won the fight against " + char1.position.monster + ".")
+            elif fight_check == "N":
+                print("You make haste and run back to the previous room. ")
+                char1.position = char1.prepos[:-1]
+                #Möglichkeit die vorherige char1.position speichern?! 
 
 #Mit game_counter und der ersten While-Schleife wird unsere infinite game-loop gestartet. 
 game_counter = 0
@@ -131,7 +145,7 @@ while game_counter < 1:
         print("Have a nice day.")
         game_counter += 1
     elif select_input == "start":
-        print("\n \nWelcome to the mysterious 'Lettered Dungeon'. Search for all the treasure, mighty weapons and defeat all enemies. For glory, loot and letters!")
+        print("\n \nWelcome to the 'Lettered Dungeon'. Search for a new entrance, all the treasure, mighty weapons and defeat all enemies. For glory, loot and peace!")
         print("What is your characters name? \n")
 
         charname = input()
@@ -141,12 +155,11 @@ while game_counter < 1:
             print(" \nGreat! Your character goes by the name " + char1.name + ". \n")
             print("I wish you all the luck while you are discovering the mysterious 'Lettered Dungeon'. \n")
 
-            print("\nYou are " + char1.name + ", a courageous pathfinder and hero. Your newest quest leads you to the mysterious 'Lettered Dungeon', where monsters stole all the letters.")
+            print("\nYou are " + char1.name + ", a courageous pathfinder and hero. Your newest quest leads you to the mysterious 'Lettered Dungeon', where monsters terrorize near villages.")
             print("The infamous Dungeon awaits you with a large black entry. Fierceless as you are, you are lighting up a torch and take the first steps into the cave. \n")
-            print("You enter the first room. In the left you see another door as well as on the right side. Which do you want to take?")
+            print("You enter the first room and you hear the sound of a boulder blocking the entrance. You sigh, since you have to find a way out of this dungeon. ") 
+            print("In the left you see another door as well as on the right side. Which do you want to take?")
             print("You can either choose door 'A' or door 'B'.")
-
-
 
             counter_entry = 0
 
@@ -156,10 +169,12 @@ while game_counter < 1:
                     if x == "A":
                         print("You open the left door with a big 'A' on it.")
                         char1.position = A
+                        char1.prepos.append(Entry)
                         counter_entry += 1
                     elif x == "B":
                         print("You open the right door with a big 'B' on it.")
                         char1.position= B
+                        char1.prepos.append(Entry)
                         counter_entry += 1 
                     else: 
                         print("Please choose between 'A' and 'B'.")
@@ -224,10 +239,14 @@ while game_counter < 1:
                 print("As you enter the room, you find a chest on the left side as well as a desk on the right side with a broken chair.")
                 print("On the other side of the wall are two further doors with the letters E and F on them.")
 
+        #Was passiert, wenn der Charakter keine Lebenspunkte mehr hat. 
+        if char1.health <= 0: 
+            print("Game over")
+            game_counter += 1
 
 
-        else: 
-            print("Please enter a valid answer. (start / leave)")
+    else: 
+        print("Please enter a valid answer. (start / leave)")
 
     #Idee: Räume enthalten Waffen und Rüstungsteile, die der Charakter ausrüsten kann. 
     #Die einzelnen Gegenstände können abgelegt werden.
