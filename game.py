@@ -41,20 +41,33 @@ class character:
             self.exp = 0
 
 
+#Zuerst werden die Gegner-Objekte sowie der Charakter und der Endboss angelegt. 
+#Main persons/characters
+endboss = enemy("Lettered Guardian", 50, 4, 3, 1000)
+char1 = character("none")
+
+#simple enemies
+bookzombieA = enemy("Book Zombie", 5, 1, 1, 35)
+bookzombieJ = enemy("Book Zombie", 5, 1, 1, 35)
+inkvampire = enemy("Ink Vampire", 10, 2, 0, 60)
+flyingscroll = enemy("Flying Scroll", 3, 3, 2, 40)
+undeadstudent = enemy("Undead Student", 5, 2, 0, 35)
+
+
 #Nun werden die relevanten Objekte erstellt. Zuerst kommen alle Räume, danach der Endboss, welcher in Raum Entry erscheinen soll, nachdem der Spieler
 #in Raum Z angekommen ist. Am Ende wird dann auch der Charakter selbst als Objekt erstellt. 
 
 Entry = room("Entry", "none", "none", "A", "B", "none")
-A = room("A", "none", "book zombie", "C", "D", "Entry")
+A = room("A", "none", bookzombieA, "C", "D", "Entry")
 B = room("B", "red potion", "none", "E", "F", "Entry")
-C = room("C", "none", "none", "G", "H", "A")
-D = room("D", "none", "none", "I", "J", "A")
+C = room("C", "none", inkvampire, "G", "H", "A")
+D = room("D", "none", flyingscroll, "I", "J", "A")
 E = room("E", "none", "none", "K", "L", "B")
-F = room("F", "none", "none", "M", "N", "B")
-G = room("G", "none", "none", "O", "none", "C")
-H = room("H", "none", "none", "O", "none", "C")
-I = room("I", "none", "none", "P", "none", "D")
-J = room("J", "none", "none", "P", "none", "D")
+F = room("F", "none", flyingscroll, "M", "N", "B")
+G = room("G", "none", undeadstudent, "O", "none", "C")
+H = room("H", "none", inkvampire, "O", "none", "C")
+I = room("I", "none", undeadstudent, "P", "none", "D")
+J = room("J", "none", bookzombieJ, "P", "none", "D")
 K = room("K", "none", "none", "Q", "none", "E")
 L = room("L", "none", "none", "Q", "none", "E")
 M = room("M", "none", "none", "R", "none", "F")
@@ -70,11 +83,9 @@ V = room("V", "none", "none", "R", "X", "none")
 W = room("W", "none", "none", "S", "T", "Y")
 X = room("X", "none", "none", "V", "U", "Y")
 Y = room("Y", "none", "none", "X", "W", "Z")
-Z = room("Z", "none", "dark mage", "none", "none", Y)
+Z = room("Z", "none", "dark mage", "none", "none", "Y")
 
 
-endboss = enemy("Lettered Guardian", 50, 4, 5, 1000)
-char1 = character("none")
 
 
 #Nachfolgend kommen wichtige Prüf-Funktionen, wenn Räume betreten werden. 
@@ -123,17 +134,19 @@ def fight(fight_enemy):
                 print("You attack your enemy with your " + char1.offhand + " while dealing " + str(char1.attack) + " damage per round.")
                 print("The " + char1.position.monster + " attacks you with 1 attackpoint per round.")
                 while char1.health > 0 or fight_enemy.health > 0:
-                    x.health -= char1.attack
+                    char1.position.monster.health -= char1.attack
                     char1.health -= fight_enemy.attack
                     if char1.health == 0:
                         print("You died in the fight versus the " + char1.position.monster + ".")
                         print("You have " + str(char1.health) + " health points left.")
                     elif fight_enemy.health == 0:
                         print("You won the fight against " + char1.position.monster + ".")
+                fight_counter += 1
             elif fight_check == "N":
                 print("You make haste and run back to the previous room. ")
                 char1.position = char1.prepos[:-1]
-                #Möglichkeit die vorherige char1.position speichern?! 
+                fight_counter += 1
+                #Möglichkeit die vorherige char1.position speichern?! Aktuell wird lediglich ein String gespeichert...
 
 #Mit game_counter und der ersten While-Schleife wird unsere infinite game-loop gestartet. 
 game_counter = 0
