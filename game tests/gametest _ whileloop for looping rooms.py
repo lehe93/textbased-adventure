@@ -111,6 +111,19 @@ def check_items(item_pos):
                 if choice == "Y":
                     print("You take the " + item_pos.items + " with you.")
                     select_counter += 1
+                    if item_pos.items == "red potion":
+                        print("As you open the flask you smell a sense of wild berries and a fruity flavor.")
+                        print("You drink the red potion and gain + 8 health points.\n")
+                        char1.health += 8
+                    elif item_pos.items == "blue potion":
+                        print("As you open the flask you smell a strong flavor of iron, metal and something between stones and sand.")
+                        print("You drink the blue potion and gain + 2 additional attack damage.\n")
+                        char1.attack += 2
+                    elif item_pos.items == "rusty sword":
+                        print("You change your weapons from " + char1.offhand + " to your new rusty sword.")
+                        print("With your new weapon you gain additional 2 attack points.\n")
+                        char1.attack += 2
+                        char1.offhand = "rusty sword"
                     item_pos.items = "none"
                 elif choice == "N":
                     print("You let the " + item_pos.items + "in the room.")
@@ -195,6 +208,7 @@ def fight(fight_pos):
                     print("You died in the fight versus the Lettered Guardian. Please restart the game. ")
                     game_counter += 1
 
+
 #chooseRoom-Funktion wird gebaut, um den Wechsel zwischen den Räumen zu vereinfachen. 
 def chooseRoom():
     print("You are currently in the room " + str(char1.position) + ".")
@@ -203,13 +217,13 @@ def chooseRoom():
         room_counter = 0
         while room_counter < 1:
             roomChoose = input()
-            if roomChoose == "A":
-                char1.position = "A"
-                print("You choose to open the door to room A and enter it.")
+            if roomChoose == Entry.dl1:
+                char1.position = Entry.dl1
+                print("You choose to open the door to room " + Entry.dl1 + " and enter it.")
                 room_counter += 1
-            elif roomChoose == "B":
-                char1.position = "B"
-                print("You choose to open the door to room B and enter it.")
+            elif roomChoose == Entry.dl2:
+                char1.position = Entry.dl2
+                print("You choose to open the door to room " + Entry.dl2 + " and enter it.")
                 room_counter += 1
             else: 
                 print("Please enter a valid response.")
@@ -218,18 +232,18 @@ def chooseRoom():
         room_counter = 0
         while room_counter < 1:
             roomChoose = input()
-            if roomChoose == "C":
-                char1.position = "C"
-                print("You choose to open the door to room C and enter it.")
+            if roomChoose == A.dl1:
+                char1.position = A.dl1
+                print("You choose to open the door to room "+ A.dl1 + " and enter it.")
                 room_counter += 1
-            elif roomChoose == "D":
-                char1.position = "D"
-                print("You choose to open the door to room D and enter it.")
+            elif roomChoose == A.dl2:
+                char1.position = A.dl2
+                print("You choose to open the door to room " + A.dl2 + " and enter it.")
                 room_counter += 1
-            elif roomChoose == "Entry":
-                char1.position = "Entry"
+            elif roomChoose == A.pre_dl:
+                char1.position = A.pre_dl
                 room_counter += 1
-                print("You choose to go back to Entry.")
+                print("You choose to go back to " + A.pre_dl + ".")
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "B":
@@ -237,21 +251,96 @@ def chooseRoom():
         room_counter = 0
         while room_counter < 1:
             roomChoose = input()
-            if roomChoose == "E":
-                char1.position = "E"
-                print("You choose to open the door to room E and enter it.")
+            if roomChoose == B.dl1:
+                char1.position = B.dl1
+                print("You choose to open the door to room " + B.dl1 + " and enter it.")
                 room_counter += 1
-            elif roomChoose == "F":
-                char1.position = "F"
-                print("You choose to open the door to room F and enter it.")
+            elif roomChoose == B.dl2:
+                char1.position = B.dl2
+                print("You choose to open the door to room " + B.dl2 + " and enter it.")
                 room_counter += 1
-            elif roomChoose == "Entry":
-                char1.position = "Entry"
+            elif roomChoose == B.pre_dl:
+                char1.position = B.pre_dl
                 room_counter += 1
-                print("You choose to go back to Entry.")
+                print("You choose to go back to " + B.pre_dl + ".")
             else: 
                 print("Please enter a valid response.")
-
+    elif char1.position == "C":
+        print("You can either enter door " + C.dl1+ " or door "+ C.dl2 + " or you could go back to " + C.pre_dl + ". Where do you want to go? (" + C.dl1 + " / " + C.dl2+ " / " + C.pre_dl + ")")
+        room_counter = 0
+        while room_counter < 1:
+            roomChoose = input()
+            if roomChoose == "G":
+                char1.position = "G"
+                print("You choose to open the door to room G and enter it.")
+                room_counter += 1
+            elif roomChoose == "H":
+                char1.position = "H"
+                print("You choose to open the door to room H and enter it.")
+                room_counter += 1
+            elif roomChoose == "A":
+                char1.position = "A"
+                room_counter += 1
+                print("You choose to go back to A.")
+            else: 
+                print("Please enter a valid response.")
+    elif char1.position == "D":
+        print("You can either enter door " + D.dl1+ " or door "+ D.dl2 + " or you could go back to " + D.pre_dl + ". Where do you want to go? (" + D.dl1 + " / " + D.dl2+ " / " + D.pre_dl + ")")
+        room_counter = 0
+        while room_counter < 1:
+            roomChoose = input()
+            if roomChoose == "I":
+                char1.position = "I"
+                print("You choose to open the door to room I and enter it.")
+                room_counter += 1
+            elif roomChoose == "J":
+                char1.position = "J"
+                print("You choose to open the door to room J and enter it.")
+                room_counter += 1
+            elif roomChoose == "A":
+                char1.position = "A"
+                room_counter += 1
+                print("You choose to go back to A.")
+            else: 
+                print("Please enter a valid response.")
+    elif char1.position == "E":
+        print("You can either enter door " + E.dl1+ " or door "+ E.dl2 + " or you could go back to " + E.pre_dl + ". Where do you want to go? (" + E.dl1 + " / " + E.dl2+ " / " + E.pre_dl + ")")
+        room_counter = 0
+        while room_counter < 1:
+            roomChoose = input()
+            if roomChoose == "K":
+                char1.position = "K"
+                print("You choose to open the door to room K and enter it.")
+                room_counter += 1
+            elif roomChoose == "L":
+                char1.position = "L"
+                print("You choose to open the door to room L and enter it.")
+                room_counter += 1
+            elif roomChoose == "B":
+                char1.position = "B"
+                room_counter += 1
+                print("You choose to go back to B.")
+            else: 
+                print("Please enter a valid response.")
+    elif char1.position == "F":
+        print("You can either enter door " + F.dl1+ " or door "+ F.dl2 + " or you could go back to " + F.pre_dl + ". Where do you want to go? (" + F.dl1 + " / " + F.dl2+ " / " + F.pre_dl + ")")
+        room_counter = 0
+        while room_counter < 1:
+            roomChoose = input()
+            if roomChoose == F.dl1:
+                char1.position = F.dl1
+                print("You choose to open the door to room " + F.dl1 + " and enter it.")
+                room_counter += 1
+            elif roomChoose == F.dl2:
+                char1.position = F.dl2
+                print("You choose to open the door to room " + F.dl2 +" and enter it.")
+                room_counter += 1
+            elif roomChoose == F.pre_dl:
+                char1.position = F.pre_dl
+                room_counter += 1
+                print("You choose to go back to " + F.pre_dl + ".")
+            else: 
+                print("Please enter a valid response.")
 
 #Die pushButtonFunktion soll erst ausgelöst werden, wenn der Charakter sich in Raum Z befindet. Er wird dann gefragt, ob er den großen Knopf drücken will.
 #Falls der Knopf gedrückt wird, öffnet sich die verschlossene Tür am Eingang und der Endboss erscheint dort. 
