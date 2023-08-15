@@ -9,10 +9,10 @@ Right now the little textbased adventure is in development. The first version "g
 
 To-Dos:
 -
-- Finalizing the chooseRoom-function in order to get the loop-function going. (currently in progress) 
 - Testing and finalizing level ups. (currently in progress) 
 - Death leads to a restart (currently in progress)
-- Navigation through all rooms with commands (currently stopped in order to finish a first, playable version without to much commands.)
+- Navigation through all rooms with commands (stopped in order to finish a first, playable version without to much commands.)
+- Further commands for a more individual gaming experience (e.g. like checkPosition, changeRoom, fight, runAway, hide, steal)
 - Safe function with saving the current character and room status in an external file (e.g. txt).
 - Load function for loading a saved character/game
 
@@ -31,5 +31,7 @@ Done:
 - enemy objects are done
 - fight mode is done
 - room objects are done
+- Finalizing the chooseRoom-function in order to get the loop-function going.
+
 
 
