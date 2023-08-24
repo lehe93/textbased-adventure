@@ -32,17 +32,10 @@ class character:
         self.defhand = "bare hand"
         self.position = "Entry"
         self.prepos = []
-        
-        if self.exp >= 500:
-            self.level += 1
-            self.attack += 1
-            self.defense += 1
-            self.health += 5 
-            self.exp = 0
+
 
 
 #Zuerst werden die Gegner-Objekte sowie der Charakter und der Endboss angelegt. 
-#Main persons/characters
 endboss = enemy("Lettered Guardian", 50, 4, 3, 1000)
 char1 = character("none")
 
@@ -52,9 +45,8 @@ inkvampire = enemy("Ink Vampire", 10, 2, 0, 120)
 flyingscroll = enemy("Flying Scroll", 3, 3, 1, 80)
 undeadstudent = enemy("Undead Student", 5, 2, 0, 75)
 
-
-#Nun werden die relevanten Objekte erstellt. Zuerst kommen alle Räume, danach der Endboss, welcher in Raum Entry erscheinen soll, nachdem der Spieler
-#in Raum Z angekommen ist. Am Ende wird dann auch der Charakter selbst als Objekt erstellt. 
+#Game_counter wird definiert, um in Funktionen etc. verwendet werden zu können. 
+game_counter = 0
 
 
 #Nun werden die relevanten Objekte erstellt. Zuerst kommen alle Räume, danach der Endboss, welcher in Raum Entry erscheinen soll, nachdem der Spieler
@@ -101,6 +93,18 @@ def check_enemy(pos):
         print("As you enter the room, you are attacked by a " + pos.monster + ".\n")
 
 
+#levelup ist die Funktion, welche prüft, ob der Charakter genügend Erfahrungspunkte gesammelt hat und dann einen Level-Up durchführt. 
+
+def levelup():
+    if char1.exp >= 500:
+        print("You reached the next level! Your abilities increase.")
+        char1.health += 10
+        char1.attack += 1
+        char1.defense += 1
+        char1.level += 1
+        char1.exp = char1.exp - 500
+
+
 #check_items dient der Überprüfung, ob es im aktuellen Raum Items gibt, bzw. ob diese herumliegen. 
 def check_items(item_pos):
         if item_pos.items == "none":
@@ -138,12 +142,12 @@ def check_items(item_pos):
 
 
 #Fight-Funktion muss überarbeitet werden. Der Defense-Bonus von char und enemy muss noch eingebaut werden. 
-
 def fight(fight_pos):
+    global game_counter
     if fight_pos.monster != "none":
         print("You grab your Weapons and start the fight versus the " + str(fight_pos.monster) + ".\n")
         if fight_pos.monster == "Book Zombie":
-            while bookzombie.health > 0:
+            while bookzombie.health > 0 or char1.health > 0:
                 bookzombie.health -= char1.attack
                 print("You hit your enemy for " + str(char1.attack) + " damage. It has " + str(bookzombie.health) + " hitpoints left.")
                 char1.health -= bookzombie.attack
@@ -153,11 +157,13 @@ def fight(fight_pos):
                     char1.exp += bookzombie.expbonus
                     fight_pos.monster = "none"
                     print("You have " + str(char1.exp) + " experience points and need " + str(500 - char1.exp) + " more points for the next character level.")
+                    break
                 elif char1.health <= 0: 
                     print("You died in the fight versus the Book Zombie. Please restart the game. ")
                     game_counter += 1
+                    break
         elif fight_pos.monster == "Ink Vampire":
-            while inkvampire.health > 0:
+            while inkvampire.health > 0 or char1.health > 0:
                 inkvampire.health -= char1.attack
                 print("You hit your enemy for " + str(char1.attack) + " damage. It has " + str(inkvampire.health) + " hitpoints left.")
                 char1.health -= inkvampire.attack
@@ -167,11 +173,13 @@ def fight(fight_pos):
                     char1.exp += inkvampire.expbonus
                     fight_pos.monster = "none"
                     print("You have " + str(char1.exp) + " experience points and need " + str(500 - char1.exp) + " more points for the next character level.")
+                    break
                 elif char1.health <= 0: 
                     print("You died in the fight versus the Ink Vampire. Please restart the game. ")
                     game_counter += 1
+                    break
         elif fight_pos.monster == "Flying Scroll":
-            while flyingscroll.health > 0:
+            while flyingscroll.health > 0 or char1.health > 0:
                 flyingscroll.health -= char1.attack
                 print("You hit your enemy for " + str(char1.attack) + " damage. It has " + str(flyingscroll.health) + " hitpoints left.")
                 char1.health -= flyingscroll.attack
@@ -181,11 +189,13 @@ def fight(fight_pos):
                     char1.exp += flyingscroll.expbonus
                     fight_pos.monster = "none"
                     print("You have " + str(char1.exp) + " experience points and need " + str(500 - char1.exp) + " more points for the next character level.")
+                    break
                 elif char1.health <= 0: 
                     print("You died in the fight versus the Flying Scroll. Please restart the game. ")
                     game_counter += 1
+                    break
         elif fight_pos.monster == "Undead Student":
-            while undeadstudent.health > 0:
+            while undeadstudent.health > 0 or char1.health > 0:
                 undeadstudent.health -= char1.attack
                 print("You hit your enemy for " + str(char1.attack) + " damage. It has " + str(undeadstudent.health) + " hitpoints left.")
                 char1.health -= undeadstudent.attack
@@ -195,11 +205,13 @@ def fight(fight_pos):
                     char1.exp += undeadstudent.expbonus
                     fight_pos.monster = "none"
                     print("You have " + str(char1.exp) + " experience points and need " + str(500 - char1.exp) + " more points for the next character level.")
+                    break
                 elif char1.health <= 0: 
                     print("You died in the fight versus the Undead Student. Please restart the game. ")
                     game_counter += 1
+                    break
         elif fight_pos.monster == "Lettered Guardian":
-            while endboss.health > 0:
+            while endboss.health > 0 or char1.health > 0:
                 endboss.health -= char1.attack
                 print("You hit your enemy for " + str(char1.attack) + " damage. It has " + str(endboss.health) + " hitpoints left.")
                 char1.health -= endboss.attack
@@ -209,9 +221,11 @@ def fight(fight_pos):
                     char1.exp += endboss.expbonus
                     fight_pos.monster = "none"
                     print("You have " + str(char1.exp) + " experience points and need " + str(500 - char1.exp) + " more points for the next character level.")
+                    break
                 elif char1.health <= 0: 
                     print("You died in the fight versus the Lettered Guardian. Please restart the game. ")
                     game_counter += 1
+                    break
     if bookzombie.health <= 0:
         bookzombie.health += 5
     elif inkvampire.health <= 0:
@@ -703,55 +717,61 @@ def pushButton():
 #Erster Versuch eine Loop-Funktion für das Durchsuchen der Räume zu bauen. Diese soll dann entsprechend oft geprüft werden in der Hauptschleife. 
 #Entscheidungs-Funktion um neue Räume zu betreten muss noch eingebaut werden. 
 
-#char1.position ist angepasst. 
-
 def loop_rooms ():
-    select_counter = 0
-    while select_counter < 1:
+    while char1.health > 0:
         print("You are currently in room " + char1.position + ".\n")
         if char1.position == "A":
             check_enemy(A)
             fight(A)
+            levelup()
             check_items(A)
             chooseRoom()
         elif char1.position == "B":
             check_enemy(B)
             fight(B)
+            levelup()
             check_items(B)
             chooseRoom()
         elif char1.position == "C":
             check_enemy(C)
             fight(C)
+            levelup()
             check_items(C)
             chooseRoom()
         elif char1.position == "D":
             check_enemy(D)
             fight(D)
+            levelup()
             check_items(D)
             chooseRoom()
         elif char1.position == "E":
             check_enemy(E)
             fight(E)
+            levelup()
             check_items(E)
             chooseRoom()
         elif char1.position == "F":
             check_enemy(F)
             fight(F)
+            levelup()
             check_items(F)
             chooseRoom()
         elif char1.position == "G":
             check_enemy(G)
             fight(G)
+            levelup()
             check_items(G)
             chooseRoom()
         elif char1.position == "H":
             check_enemy(H)
             fight(H)
+            levelup()
             check_items(H)
             chooseRoom()
         elif char1.position == "I":
             check_enemy(I)
             fight(I)
+            levelup()
             check_items(I)
             chooseRoom()
         elif char1.position == "J":
@@ -762,87 +782,104 @@ def loop_rooms ():
         elif char1.position == "K":
             check_enemy(K)
             fight(K)
+            levelup()
             check_items(K)
             chooseRoom()
         elif char1.position == "L":
             check_enemy(L)
             fight(L)
+            levelup()
             check_items(L)
             chooseRoom()
         elif char1.position == "M":
             check_enemy(M)
             fight(M)
+            levelup()
             check_items(M)
             chooseRoom()
         elif char1.position == "N":
             check_enemy(N)
             fight(N)
+            levelup()
             check_items(N)
             chooseRoom()
         elif char1.position == "O":
             check_enemy(O)
             fight(O)
+            levelup()
             check_items(O)
             chooseRoom()
         elif char1.position == "P":
             check_enemy(P)
             fight(P)
+            levelup()
             check_items(P)
             chooseRoom()
         elif char1.position == "Q":
             check_enemy(Q)
             fight(Q)
+            levelup()
             check_items(Q)
             chooseRoom()
         elif char1.position == "R":
             check_enemy(R)
             fight(R)
+            levelup()
             check_items(R)
             chooseRoom()
         elif char1.position == "S":
             check_enemy(S)
             fight(S)
+            levelup()
             check_items(S)
             chooseRoom()
         elif char1.position == "T":
             check_enemy(T)
             fight(T)
+            levelup()
             check_items(T)
             chooseRoom()
         elif char1.position == "U":
             check_enemy(U)
             fight(U)
+            levelup()
             check_items(U)
             chooseRoom()
         elif char1.position == "V":
             check_enemy(V)
             fight(V)
+            levelup()
             check_items(V)
             chooseRoom()
         elif char1.position == "W":
             check_enemy(W)
             fight(W)
+            levelup()
             check_items(W)
             chooseRoom()
         elif char1.position == "X":
             check_enemy(X)
             fight(X)
+            levelup()
             check_items(X)
             chooseRoom()
         elif char1.position == "Y":
             check_enemy(Y)
             fight(Y)
+            levelup()
             check_items(Y)
             chooseRoom()
         elif char1.position == "Z":
             check_enemy(Z)
-            fight(Z)    
+            fight(Z)
+            levelup()   
             check_items(Z)
             pushButton()
             chooseRoom()
         elif char1.position == "Entry":
             check_enemy(Entry)
             fight(Entry)
+            levelup()
             check_items(Entry)
             chooseRoom()
         else:
@@ -853,7 +890,6 @@ def loop_rooms ():
 
 
 #Mit game_counter und der ersten While-Schleife wird unsere infinite game-loop gestartet. 
-game_counter = 0
 
 while game_counter < 1:
     print("\n \nWelcome to this little text-based adventure game. Do you want to start the game? (start / leave) \n")
@@ -867,7 +903,7 @@ while game_counter < 1:
 
         charname = input()
         char1.name = charname
-        while char1.health >= 0:
+        while char1.health > 0 and game_counter < 1:
 
             print(" \nGreat! Your character goes by the name " + char1.name + ". \n")
             print("I wish you all the luck while you are discovering the mysterious 'Lettered Dungeon'. \n")
@@ -875,4 +911,11 @@ while game_counter < 1:
             print("\nYou are " + char1.name + ", a courageous pathfinder and hero. Your newest quest leads you to the mysterious 'Lettered Dungeon', where monsters terrorize near villages.")
             print("The infamous Dungeon awaits you with a large black entry. Fierceless as you are, you are lighting up a torch and take the first steps into the cave. ")
             print("You enter the first room and you hear the sound of a boulder blocking the entrance. You sigh, since you have to find a way out of this dungeon. \n") 
+
             loop_rooms()
+            if char1.health <= 0:
+                print("Unfortunately your character died while exploring the dungeon.")
+                game_counter += 1
+
+    else: 
+        print("Please enter a valid response.")
