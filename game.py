@@ -23,7 +23,7 @@ class enemy:
 class character:
     def __init__(self, name):
         self.name = name
-        self.health = int(20)
+        self.health = int(50)
         self.exp = int(0) 
         self.attack = int(2)
         self.defense = int(0) 
@@ -98,6 +98,7 @@ def check_enemy(pos):
 def levelup():
     if char1.exp >= 500:
         print("You reached the next level! Your abilities increase.")
+        char1.health = 50
         char1.health += 10
         char1.attack += 1
         char1.defense += 1
@@ -723,165 +724,247 @@ def loop_rooms ():
         if char1.position == "A":
             check_enemy(A)
             fight(A)
-            levelup()
-            check_items(A)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(A)
+                chooseRoom()
         elif char1.position == "B":
             check_enemy(B)
             fight(B)
-            levelup()
-            check_items(B)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(B)
+                chooseRoom()
         elif char1.position == "C":
             check_enemy(C)
             fight(C)
-            levelup()
-            check_items(C)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(C)
+                chooseRoom()
         elif char1.position == "D":
             check_enemy(D)
             fight(D)
-            levelup()
-            check_items(D)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(D)
+                chooseRoom()
         elif char1.position == "E":
             check_enemy(E)
             fight(E)
-            levelup()
-            check_items(E)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(E)
+                chooseRoom()
         elif char1.position == "F":
             check_enemy(F)
             fight(F)
-            levelup()
-            check_items(F)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(F)
+                chooseRoom()
         elif char1.position == "G":
             check_enemy(G)
             fight(G)
-            levelup()
-            check_items(G)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(G)
+                chooseRoom()
         elif char1.position == "H":
             check_enemy(H)
             fight(H)
-            levelup()
-            check_items(H)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(H)
+                chooseRoom()
         elif char1.position == "I":
             check_enemy(I)
             fight(I)
-            levelup()
-            check_items(I)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(I)
+                chooseRoom()
         elif char1.position == "J":
             check_enemy(J)
             fight(J)
-            check_items(J)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(J)
+                chooseRoom()
         elif char1.position == "K":
             check_enemy(K)
             fight(K)
-            levelup()
-            check_items(K)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(K)
+                chooseRoom()
         elif char1.position == "L":
             check_enemy(L)
             fight(L)
-            levelup()
-            check_items(L)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(L)
+                chooseRoom()
         elif char1.position == "M":
             check_enemy(M)
             fight(M)
-            levelup()
-            check_items(M)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(M)
+                chooseRoom()
         elif char1.position == "N":
             check_enemy(N)
             fight(N)
-            levelup()
-            check_items(N)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(N)
+                chooseRoom()
         elif char1.position == "O":
             check_enemy(O)
             fight(O)
-            levelup()
-            check_items(O)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(O)
+                chooseRoom()
         elif char1.position == "P":
             check_enemy(P)
             fight(P)
-            levelup()
-            check_items(P)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(P)
+                chooseRoom()
         elif char1.position == "Q":
             check_enemy(Q)
             fight(Q)
-            levelup()
-            check_items(Q)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(Q)
+                chooseRoom()
         elif char1.position == "R":
             check_enemy(R)
             fight(R)
-            levelup()
-            check_items(R)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(R)
+                chooseRoom()
         elif char1.position == "S":
             check_enemy(S)
             fight(S)
-            levelup()
-            check_items(S)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(S)
+                chooseRoom()
         elif char1.position == "T":
             check_enemy(T)
             fight(T)
-            levelup()
-            check_items(T)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(T)
+                chooseRoom()
         elif char1.position == "U":
             check_enemy(U)
             fight(U)
-            levelup()
-            check_items(U)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(U)
+                chooseRoom()
         elif char1.position == "V":
             check_enemy(V)
             fight(V)
-            levelup()
-            check_items(V)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(V)
+                chooseRoom()
         elif char1.position == "W":
             check_enemy(W)
             fight(W)
-            levelup()
-            check_items(W)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(W)
+                chooseRoom()
         elif char1.position == "X":
             check_enemy(X)
             fight(X)
-            levelup()
-            check_items(X)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(X)
+                chooseRoom()
         elif char1.position == "Y":
             check_enemy(Y)
             fight(Y)
-            levelup()
-            check_items(Y)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(Y)
+                chooseRoom()
         elif char1.position == "Z":
             check_enemy(Z)
             fight(Z)
-            levelup()   
-            check_items(Z)
-            pushButton()
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()   
+                check_items(Z)
+                pushButton()
+                chooseRoom()
         elif char1.position == "Entry":
             check_enemy(Entry)
             fight(Entry)
-            levelup()
-            check_items(Entry)
-            chooseRoom()
+            if char1.health <= 0:
+                break
+            else:
+                levelup()
+                check_items(Entry)
+                chooseRoom()
         else:
             print("Please enter a valid response")
 
