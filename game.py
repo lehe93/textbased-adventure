@@ -56,13 +56,13 @@ Entry = room("Entry", "none", "none", "A", "B", "none")
 A = room("A", "none", "Book Zombie", "C", "D", "Entry")
 B = room("B", "red potion", "none", "E", "F", "Entry")
 C = room("C", "none", "Ink Vampire", "G", "H", "A")
-D = room("D", "none", "Flying Scroll", "I", "J", "A")
+D = room("D", "blue potion", "Flying Scroll", "I", "J", "A")
 E = room("E", "none", "none", "K", "L", "B")
-F = room("F", "none", "Flying Scroll", "M", "N", "B")
+F = room("F", "", "Flying Scroll", "M", "N", "B")
 G = room("G", "none", "Undead Student", "O", "none", "C")
 H = room("H", "none", "Ink Vampire", "O", "none", "C")
-I = room("I", "none", "Undead Student", "P", "none", "D")
-J = room("J", "none", "Book Zombie", "P", "none", "D")
+I = room("I", "light axe", "Undead Student", "P", "none", "D")
+J = room("J", "rusty sword", "Book Zombie", "P", "none", "D")
 K = room("K", "none", "Book Zombie", "Q", "none", "E")
 L = room("L", "none", "Book Zombie", "Q", "none", "E")
 M = room("M", "none", "Ink Vampire", "R", "none", "F")
@@ -124,22 +124,30 @@ def check_items(item_pos):
                         print("As you open the flask you smell a sense of wild berries and a fruity flavor.")
                         print("You drink the red potion and gain + 8 health points.")
                         char1.health += 8
+                        item_pos.items = "none"
                         print("You have now " + str(char1.health) + " hitpoints.")
                     elif item_pos.items == "blue potion":
                         print("As you open the flask you smell a strong flavor of iron, metal and something between stones and sand.")
                         print("You drink the blue potion and gain + 2 additional attack damage.\n")
                         char1.attack += 2
+                        item_pos.items = "none"
                     elif item_pos.items == "rusty sword":
                         print("You change your weapons from " + char1.offhand + " to your new rusty sword.")
                         print("With your new weapon you gain additional 2 attack points.\n")
                         char1.attack += 2
                         char1.offhand = "rusty sword"
-                    item_pos.items = "none"
+                        item_pos.items = "none"
+                    elif item_pos.items == "light axe":
+                        print("You change your weapons from " + char1.offhand + " to your new light axe.")
+                        print("With your new weapon you gain additional 3 attack points.\n")
+                        char1.attack += 3
+                        char1.offhand = "light axe"
                 elif choice == "N":
                     print("You let the " + item_pos.items + "in the room.")
                     select_counter += 1
                 else:
                     print("Please enter a valid response.")
+        
 
 
 #Fight-Funktion muss überarbeitet werden. Der Defense-Bonus von char und enemy muss noch eingebaut werden. 
@@ -713,6 +721,7 @@ def pushButton():
             button_counter += 1
         else: 
             print("Please enter a valid response.")
+
 
 
 #Erster Versuch eine Loop-Funktion für das Durchsuchen der Räume zu bauen. Diese soll dann entsprechend oft geprüft werden in der Hauptschleife. 
