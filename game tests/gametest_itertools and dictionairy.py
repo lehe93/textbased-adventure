@@ -39,13 +39,18 @@ Z = room("Z", "none", "Ink Vampire", "none", "none", "Y")
 
 
 
+#Reminder: Dictionairies haben stets einen Key zu dem ein Value gehört: z.B. Key "A" mit Value A. 
 
-room_dict = {"A": A, "B": B, "C": C, "D": D, "E": E, "F": F, "G": G, "H": H, "I": I, "J": J, "K": K, "L": L, "M": M, "N": N, "O": O, "P": P, "Q": Q, "R": R,
+room_dict = {"A": A.name, "B": B.name, "C": C, "D": D, "E": E, "F": F, "G": G, "H": H, "I": I, "J": J, "K": K, "L": L, "M": M, "N": N, "O": O, "P": P, "Q": Q, "R": R,
              "S": S, "T": T, "U": U, "V": V, "W": W, "X": X, "Y": Y, "Z": Z}
 
 def iter_room():
     i = input()
-    for i in room_dict:
-        if i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-            print(room_dict[str(i)])
-            break
+    if i in room_dict:
+        print(room_dict[str(i)])
+    else:
+        print("Your Answer is not available.")
+
+print("Please enter a tall letter.")
+iter_room()
+
