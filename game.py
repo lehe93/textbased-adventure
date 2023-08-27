@@ -58,7 +58,7 @@ B = room("B", "red potion", "none", "E", "F", "Entry")
 C = room("C", "none", "Ink Vampire", "G", "H", "A")
 D = room("D", "blue potion", "Flying Scroll", "I", "J", "A")
 E = room("E", "none", "none", "K", "L", "B")
-F = room("F", "", "Flying Scroll", "M", "N", "B")
+F = room("F", "rusty sword", "Flying Scroll", "M", "N", "B")
 G = room("G", "none", "Undead Student", "O", "none", "C")
 H = room("H", "none", "Ink Vampire", "O", "none", "C")
 I = room("I", "light axe", "Undead Student", "P", "none", "D")
@@ -97,7 +97,7 @@ def check_enemy(pos):
 
 def levelup():
     if char1.exp >= 500:
-        print("You reached the next level! Your abilities increase.")
+        print("\nYou reached the next level! Your abilities increase.\n")
         char1.health = 50
         char1.health += 10
         char1.attack += 1
@@ -142,6 +142,7 @@ def check_items(item_pos):
                         print("With your new weapon you gain additional 3 attack points.\n")
                         char1.attack += 3
                         char1.offhand = "light axe"
+                        item_pos = "none"
                 elif choice == "N":
                     print("You let the " + item_pos.items + "in the room.")
                     select_counter += 1
@@ -229,7 +230,11 @@ def fight(fight_pos):
                     print("\nYou won the fight versus the Lettered Guardian and earned " + str(endboss.expbonus) + " experience points.")
                     char1.exp += endboss.expbonus
                     fight_pos.monster = "none"
-                    print("You have " + str(char1.exp) + " experience points and need " + str(500 - char1.exp) + " more points for the next character level.")
+                    print("You have " + str(char1.exp) + " experience points.")
+                    print("\nAs you pull out your weapon of the dead Lettered Guardian you hear the opening sound of the dungeon entrance.")
+                    print("You make your way out of the dungeon happy that you could defeat all the evil inside of it.\n\n")
+                    print("Restart the python-Script, if you want to play another round.")
+                    game_counter += 1
                     break
                 elif char1.health <= 0: 
                     print("You died in the fight versus the Lettered Guardian. Please restart the game. ")
