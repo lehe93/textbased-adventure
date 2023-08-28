@@ -142,12 +142,13 @@ def check_items(item_pos):
                         print("With your new weapon you gain additional 3 attack points.\n")
                         char1.attack += 3
                         char1.offhand = "light axe"
-                        item_pos = "none"
+                        item_pos.items = "none"
                 elif choice == "N":
                     print("You let the " + item_pos.items + "in the room.")
                     select_counter += 1
                 else:
                     print("Please enter a valid response.")
+                    #Fight-Funtion + offhand und defhand überarbeiten: Strings raus und modifikatoren rein 
         
 
 
@@ -233,7 +234,6 @@ def fight(fight_pos):
                     print("You have " + str(char1.exp) + " experience points.")
                     print("\nAs you pull out your weapon of the dead Lettered Guardian you hear the opening sound of the dungeon entrance.")
                     print("You make your way out of the dungeon happy that you could defeat all the evil inside of it.\n\n")
-                    print("Restart the python-Script, if you want to play another round.")
                     game_counter += 1
                     break
                 elif char1.health <= 0: 
@@ -1013,6 +1013,8 @@ while game_counter < 1:
             if char1.health <= 0:
                 print("Unfortunately your character died while exploring the dungeon.")
                 game_counter += 1
+            elif endboss.health <= 0:
+                print("You defeated the infamous Lettered Dungeon and walk out into the rising sun.")
 
     else: 
         print("Please enter a valid response.")
