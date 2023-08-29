@@ -29,6 +29,7 @@ class character:
         self.defense = int(0) 
         self.level = int(1) 
         self.offhand = "bare hand"
+        self.ohbonus = int(0)
         self.defhand = "bare hand"
         self.position = "Entry"
         self.prepos = []
@@ -134,14 +135,32 @@ def check_items(item_pos):
                     elif item_pos.items == "rusty sword":
                         print("You change your weapons from " + char1.offhand + " to your new rusty sword.")
                         print("With your new weapon you gain additional 2 attack points.\n")
-                        char1.attack += 2
+                        char1.ohbonus = 2
                         char1.offhand = "rusty sword"
                         item_pos.items = "none"
                     elif item_pos.items == "light axe":
                         print("You change your weapons from " + char1.offhand + " to your new light axe.")
                         print("With your new weapon you gain additional 3 attack points.\n")
-                        char1.attack += 3
+                        char1.ohbonus = 3
                         char1.offhand = "light axe"
+                        item_pos.items = "none"
+                    elif item_pos.items == "iron sword":
+                        print("You change your weapons from " + char1.offhand + " to your new iron sword.")
+                        print("With your new weapon you gain additional 3 attack points.\n")
+                        char1.ohbonus = 4
+                        char1.offhand = "iron sword"
+                        item_pos.items = "none"
+                    elif item_pos.items == "stiff daggers":
+                        print("You change your weapons from " + char1.offhand + " to your new stiff daggers.")
+                        print("With your new weapon you gain additional 3 attack points.\n")
+                        char1.ohbonus = 3
+                        char1.offhand = "stiff daggers"
+                        item_pos.items = "none"
+                    elif item_pos.items == "giant axe":
+                        print("You change your weapons from " + char1.offhand + " to your new giant axe.")
+                        print("With your new weapon you gain additional 3 attack points.\n")
+                        char1.ohbonus = 5
+                        char1.offhand = "giant axe"
                         item_pos.items = "none"
                 elif choice == "N":
                     print("You let the " + item_pos.items + "in the room.")
@@ -159,8 +178,8 @@ def fight(fight_pos):
         print("You grab your Weapons and start the fight versus the " + str(fight_pos.monster) + ".\n")
         if fight_pos.monster == "Book Zombie":
             while bookzombie.health > 0 or char1.health > 0:
-                bookzombie.health -= char1.attack
-                print("You hit your enemy for " + str(char1.attack) + " damage. It has " + str(bookzombie.health) + " hitpoints left.")
+                bookzombie.health -= (char1.attack + char1.ohbonus)
+                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage. It has " + str(bookzombie.health) + " hitpoints left.")
                 char1.health -= bookzombie.attack
                 print("You got hit by your enemy for " + str(bookzombie.attack) + " damage. You have " + str(char1.health) + " hitpoints left.")
                 if bookzombie.health <= 0:
@@ -175,8 +194,8 @@ def fight(fight_pos):
                     break
         elif fight_pos.monster == "Ink Vampire":
             while inkvampire.health > 0 or char1.health > 0:
-                inkvampire.health -= char1.attack
-                print("You hit your enemy for " + str(char1.attack) + " damage. It has " + str(inkvampire.health) + " hitpoints left.")
+                inkvampire.health -= (char1.attack + char1.ohbonus)
+                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage. It has " + str(inkvampire.health) + " hitpoints left.")
                 char1.health -= inkvampire.attack
                 print("You got hit by your enemy for " + str(inkvampire.attack) + " damage. You have " + str(char1.health) + " hitpoints left.")
                 if inkvampire.health <= 0:
@@ -191,8 +210,8 @@ def fight(fight_pos):
                     break
         elif fight_pos.monster == "Flying Scroll":
             while flyingscroll.health > 0 or char1.health > 0:
-                flyingscroll.health -= char1.attack
-                print("You hit your enemy for " + str(char1.attack) + " damage. It has " + str(flyingscroll.health) + " hitpoints left.")
+                flyingscroll.health -= (char1.attack + char1.ohbonus)
+                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage. It has " + str(flyingscroll.health) + " hitpoints left.")
                 char1.health -= flyingscroll.attack
                 print("You got hit by your enemy for " + str(flyingscroll.attack) + " damage. You have " + str(char1.health) + " hitpoints left.")
                 if flyingscroll.health <= 0:
@@ -207,8 +226,8 @@ def fight(fight_pos):
                     break
         elif fight_pos.monster == "Undead Student":
             while undeadstudent.health > 0 or char1.health > 0:
-                undeadstudent.health -= char1.attack
-                print("You hit your enemy for " + str(char1.attack) + " damage. It has " + str(undeadstudent.health) + " hitpoints left.")
+                undeadstudent.health -= (char1.attack + char1.ohbonus)
+                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage. It has " + str(undeadstudent.health) + " hitpoints left.")
                 char1.health -= undeadstudent.attack
                 print("You got hit by your enemy for " + str(undeadstudent.attack) + " damage. You have " + str(char1.health) + " hitpoints left.")
                 if undeadstudent.health <= 0:
@@ -223,8 +242,8 @@ def fight(fight_pos):
                     break
         elif fight_pos.monster == "Lettered Guardian":
             while endboss.health > 0 or char1.health > 0:
-                endboss.health -= char1.attack
-                print("You hit your enemy for " + str(char1.attack) + " damage. It has " + str(endboss.health) + " hitpoints left.")
+                endboss.health -= (char1.attack + char1.ohbonus)
+                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage. It has " + str(endboss.health) + " hitpoints left.")
                 char1.health -= endboss.attack
                 print("You got hit by your enemy for " + str(endboss.attack) + " damage. You have " + str(char1.health) + " hitpoints left.")
                 if endboss.health <= 0:
