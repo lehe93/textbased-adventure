@@ -66,20 +66,20 @@ I = room("I", "light axe", "Undead Student", "P", "none", "D")
 J = room("J", "rusty sword", "Book Zombie", "P", "none", "D")
 K = room("K", "none", "Book Zombie", "Q", "none", "E")
 L = room("L", "none", "Book Zombie", "Q", "none", "E")
-M = room("M", "none", "Ink Vampire", "R", "none", "F")
-N = room("N", "none", "Undead Student", "R", "none", "F")
-O = room("O", "none", "Undead Student", "G", "H", "S")
-P = room("P", "none", "Flying Scroll", "I", "J", "T")
+M = room("M", "silver sword", "Ink Vampire", "R", "none", "F")
+N = room("N", "stiff daggers", "Undead Student", "R", "none", "F")
+O = room("O", "blue potion", "Undead Student", "G", "H", "S")
+P = room("P", "red potion", "Flying Scroll", "I", "J", "T")
 Q = room("Q", "none", "Flying Scroll", "K", "L", "U")
-R = room("R", "none", "Ink Vampire", "M", "N", "V")
-S = room("S", "none", "Ink Vampire", "O", "W", "none")
-T = room("T", "none", "none", "P", "W", "none")
+R = room("R", "giant axe", "Ink Vampire", "M", "N", "V")
+S = room("S", "silver sword", "Ink Vampire", "O", "W", "none")
+T = room("T", "red potion", "none", "P", "W", "none")
 U = room("U", "none", "Undead Student", "Q", "X", "none")
-V = room("V", "none", "Book Zombie", "R", "X", "none")
-W = room("W", "none", "none", "S", "T", "Y")
-X = room("X", "none", "none", "V", "U", "Y")
-Y = room("Y", "none", "none", "X", "W", "Z")
-Z = room("Z", "none", "Ink Vampire", "none", "none", "Y")
+V = room("V", "stiff daggers", "Book Zombie", "R", "X", "none")
+W = room("W", "brown potion", "none", "S", "T", "Y")
+X = room("X", "none", "ink vampire", "V", "U", "Y")
+Y = room("Y", "giant axe", "book zombie", "X", "W", "Z")
+Z = room("Z", "rusty sword", "Ink Vampire", "none", "none", "Y")
 
 
 
@@ -161,6 +161,12 @@ def check_items(item_pos):
                         print("With your new weapon you gain additional 3 attack points.\n")
                         char1.ohbonus = 5
                         char1.offhand = "giant axe"
+                        item_pos.items = "none"
+                    elif item_pos.items == "brown potion":
+                        print("As you open the flask you smell the sweet flavor of chocolate and caramel. ")
+                        print("You drink the brown potion and feel suddenly much weaker and poisoned. You loose 4 attack damage and 10 hit points.\n")
+                        char1.attack -= 4
+                        char1.health -= 10
                         item_pos.items = "none"
                 elif choice == "N":
                     print("You let the " + item_pos.items + "in the room.")
