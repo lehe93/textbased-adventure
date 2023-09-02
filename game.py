@@ -122,48 +122,48 @@ def check_items(item_pos):
                     print("You take the " + item_pos.items + " with you.")
                     select_counter += 1
                     if item_pos.items == "red potion":
-                        print("As you open the flask you smell a sense of wild berries and a fruity flavor.")
+                        print("\nAs you open the flask you smell a sense of wild berries and a fruity flavor.")
                         print("You drink the red potion and gain + 8 health points.")
                         char1.health += 8
                         item_pos.items = "none"
                         print("You have now " + str(char1.health) + " hitpoints.")
                     elif item_pos.items == "blue potion":
-                        print("As you open the flask you smell a strong flavor of iron, metal and something between stones and sand.")
+                        print("\nAs you open the flask you smell a strong flavor of iron, metal and something between stones and sand.")
                         print("You drink the blue potion and gain + 2 additional attack damage.\n")
                         char1.attack += 2
                         item_pos.items = "none"
                     elif item_pos.items == "rusty sword":
-                        print("You change your weapons from " + char1.offhand + " to your new rusty sword.")
+                        print("\nYou change your weapons from " + char1.offhand + " to your new rusty sword.")
                         print("With your new weapon you gain additional 2 attack points.\n")
                         char1.ohbonus = 2
                         char1.offhand = "rusty sword"
                         item_pos.items = "none"
                     elif item_pos.items == "light axe":
-                        print("You change your weapons from " + char1.offhand + " to your new light axe.")
+                        print("\nYou change your weapons from " + char1.offhand + " to your new light axe.")
                         print("With your new weapon you gain additional 3 attack points.\n")
                         char1.ohbonus = 3
                         char1.offhand = "light axe"
                         item_pos.items = "none"
                     elif item_pos.items == "iron sword":
-                        print("You change your weapons from " + char1.offhand + " to your new iron sword.")
-                        print("With your new weapon you gain additional 3 attack points.\n")
+                        print("\nYou change your weapons from " + char1.offhand + " to your new iron sword.")
+                        print("With your new weapon you gain additional 4 attack points.\n")
                         char1.ohbonus = 4
                         char1.offhand = "iron sword"
                         item_pos.items = "none"
                     elif item_pos.items == "stiff daggers":
-                        print("You change your weapons from " + char1.offhand + " to your new stiff daggers.")
+                        print("\nYou change your weapons from " + char1.offhand + " to your new stiff daggers.")
                         print("With your new weapon you gain additional 3 attack points.\n")
                         char1.ohbonus = 3
                         char1.offhand = "stiff daggers"
                         item_pos.items = "none"
                     elif item_pos.items == "giant axe":
-                        print("You change your weapons from " + char1.offhand + " to your new giant axe.")
-                        print("With your new weapon you gain additional 3 attack points.\n")
+                        print("\nYou change your weapons from " + char1.offhand + " to your new giant axe.")
+                        print("With your new weapon you gain additional 5 attack points.\n")
                         char1.ohbonus = 5
                         char1.offhand = "giant axe"
                         item_pos.items = "none"
                     elif item_pos.items == "brown potion":
-                        print("As you open the flask you smell the sweet flavor of chocolate and caramel. ")
+                        print("\nAs you open the flask you smell the sweet flavor of chocolate and caramel. ")
                         print("You drink the brown potion and feel suddenly much weaker and poisoned. You loose 4 attack damage and 10 hit points.\n")
                         char1.attack -= 4
                         char1.health -= 10
@@ -277,10 +277,19 @@ def fight(fight_pos):
 
 #chooseRoom-Funktion wird gebaut, um den Wechsel zwischen den Räumen zu vereinfachen. 
 def chooseRoom():
+    global game_counter
     print("You are currently in the room " + str(char1.position) + ".")
     if char1.position == "Entry":
-        print("You can either enter door " + Entry.dl1 + " or door "+ Entry.dl2 + ". Where do you want to go? (" + Entry.dl1 + " / " + Entry.dl2 + ")")
         room_counter = 0
+        if endboss.health < 0:
+            print("You defeated the infamous Lettered Dungeon and walk out into the rising sun.")
+            game_counter += 1
+            room_counter += 1
+        elif char1.health < 0:
+            print("Unfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + Entry.dl1 + " or door "+ Entry.dl2 + ". Where do you want to go? (" + Entry.dl1 + " / " + Entry.dl2 + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == Entry.dl1:
@@ -735,9 +744,10 @@ def chooseRoom():
 #Die pushButtonFunktion soll erst ausgelöst werden, wenn der Charakter sich in Raum Z befindet. Er wird dann gefragt, ob er den großen Knopf drücken will.
 #Falls der Knopf gedrückt wird, öffnet sich die verschlossene Tür am Eingang und der Endboss erscheint dort. 
 
+button_counter = 0
 def pushButton():
     print("As you enter room Z you see an old mechanical device with a round button on it. Do you want to press the button? (Yes / No) \n")
-    button_counter = 0
+    global button_counter
     while button_counter < 1:
         button_choice = input()
         if button_choice == "Yes":
@@ -758,7 +768,8 @@ def pushButton():
 #Entscheidungs-Funktion um neue Räume zu betreten muss noch eingebaut werden. 
 
 def loop_rooms ():
-    while char1.health > 0:
+    global game_counter
+    while char1.health > 0 and endboss.health > 0:
         print("You are currently in room " + char1.position + ".\n")
         if char1.position == "A":
             check_enemy(A)
@@ -1040,6 +1051,7 @@ while game_counter < 1:
                 game_counter += 1
             elif endboss.health <= 0:
                 print("You defeated the infamous Lettered Dungeon and walk out into the rising sun.")
+                game_counter += 1
 
     else: 
         print("Please enter a valid response.")
