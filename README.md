@@ -9,7 +9,6 @@ The first version of my little game is playable! The game.py file can be execute
 
 To-Dos:
 -
-- Creating more items and place them in different rooms.  
 - Navigation through all rooms with commands (stopped in order to finish a first, playable version without to much commands.)
 - Further commands for a more individual gaming experience (e.g. like checkPosition, changeRoom, fight, runAway, hide, steal)
 - Safe function with saving the current character and room status in an external file (e.g. txt).
@@ -25,6 +24,7 @@ If you have suggestions for this little game or you have advice for me, just sen
 
 Done:
 - 
+- Creating more items and place them in different rooms.  
 - Testing and finalizing level ups. (currently in progress) 
 - Death leads to a restart (currently in progress)
 - check_enemy function is done
