@@ -286,11 +286,11 @@ def chooseRoom():
             game_counter += 1
             room_counter += 1
         elif char1.health < 0:
-            print("Unfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
             game_counter += 1
             room_counter += 1
-        print("You can either enter door " + Entry.dl1 + " or door "+ Entry.dl2 + ". Where do you want to go? (" + Entry.dl1 + " / " + Entry.dl2 + ")")
         while room_counter < 1:
+            print("You can either enter door " + Entry.dl1 + " or door "+ Entry.dl2 + ". Where do you want to go? (" + Entry.dl1 + " / " + Entry.dl2 + ")")
             roomChoose = input()
             if roomChoose == Entry.dl1:
                 char1.position = Entry.dl1
@@ -303,8 +303,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "A":
-        print("You can either enter door " + A.dl1+ " or door "+ A.dl2 + " or you could go back to " + A.pre_dl + ". Where do you want to go? (" + A.dl1 + " / " + A.dl2+ " / " + A.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + A.dl1+ " or door "+ A.dl2 + " or you could go back to " + A.pre_dl + ". Where do you want to go? (" + A.dl1 + " / " + A.dl2+ " / " + A.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == A.dl1:
@@ -322,8 +326,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "B":
-        print("You can either enter door " + B.dl1+ " or door "+ B.dl2 + " or you could go back to " + B.pre_dl + ". Where do you want to go? (" + B.dl1 + " / " + B.dl2+ " / " + B.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + B.dl1+ " or door "+ B.dl2 + " or you could go back to " + B.pre_dl + ". Where do you want to go? (" + B.dl1 + " / " + B.dl2+ " / " + B.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == B.dl1:
@@ -341,8 +349,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "C":
-        print("You can either enter door " + C.dl1+ " or door "+ C.dl2 + " or you could go back to " + C.pre_dl + ". Where do you want to go? (" + C.dl1 + " / " + C.dl2+ " / " + C.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + C.dl1+ " or door "+ C.dl2 + " or you could go back to " + C.pre_dl + ". Where do you want to go? (" + C.dl1 + " / " + C.dl2+ " / " + C.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == C.dl1:
@@ -360,8 +372,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "D":
-        print("You can either enter door " + D.dl1+ " or door "+ D.dl2 + " or you could go back to " + D.pre_dl + ". Where do you want to go? (" + D.dl1 + " / " + D.dl2+ " / " + D.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + D.dl1+ " or door "+ D.dl2 + " or you could go back to " + D.pre_dl + ". Where do you want to go? (" + D.dl1 + " / " + D.dl2+ " / " + D.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == D.dl1:
@@ -379,8 +395,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "E":
-        print("You can either enter door " + E.dl1+ " or door "+ E.dl2 + " or you could go back to " + E.pre_dl + ". Where do you want to go? (" + E.dl1 + " / " + E.dl2+ " / " + E.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + E.dl1+ " or door "+ E.dl2 + " or you could go back to " + E.pre_dl + ". Where do you want to go? (" + E.dl1 + " / " + E.dl2+ " / " + E.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == E.dl1:
@@ -398,8 +418,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "F":
-        print("You can either enter door " + F.dl1+ " or door "+ F.dl2 + " or you could go back to " + F.pre_dl + ". Where do you want to go? (" + F.dl1 + " / " + F.dl2+ " / " + F.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + F.dl1+ " or door "+ F.dl2 + " or you could go back to " + F.pre_dl + ". Where do you want to go? (" + F.dl1 + " / " + F.dl2+ " / " + F.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == F.dl1:
@@ -417,8 +441,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "G":
-        print("You can either enter door " + G.dl1+ " or you could go back to " + G.pre_dl + ". Where do you want to go? (" + G.dl1 + " / " + G.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + G.dl1+ " or you could go back to " + G.pre_dl + ". Where do you want to go? (" + G.dl1 + " / " + G.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == G.dl1:
@@ -432,8 +460,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "H":
-        print("You can either enter door " + H.dl1+ " or you could go back to " + H.pre_dl + ". Where do you want to go? (" + H.dl1 + " / " + H.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + H.dl1+ " or you could go back to " + H.pre_dl + ". Where do you want to go? (" + H.dl1 + " / " + H.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == H.dl1:
@@ -447,8 +479,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "I":
-        print("You can either enter door " + I.dl1+ " or you could go back to " + I.pre_dl + ". Where do you want to go? (" + I.dl1 + " / " + I.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + I.dl1+ " or you could go back to " + I.pre_dl + ". Where do you want to go? (" + I.dl1 + " / " + I.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == I.dl1:
@@ -462,8 +498,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "J":
-        print("You can either enter door " + J.dl1+ " or you could go back to " + J.pre_dl + ". Where do you want to go? (" + J.dl1 + " / " + J.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + J.dl1+ " or you could go back to " + J.pre_dl + ". Where do you want to go? (" + J.dl1 + " / " + J.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == J.dl1:
@@ -477,8 +517,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "K":
-        print("You can either enter door " + K.dl1+ " or you could go back to " + K.pre_dl + ". Where do you want to go? (" + K.dl1 + " / " + K.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + K.dl1+ " or you could go back to " + K.pre_dl + ". Where do you want to go? (" + K.dl1 + " / " + K.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == K.dl1:
@@ -492,8 +536,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "L":
-        print("You can either enter door " + L.dl1+ " or you could go back to " + L.pre_dl + ". Where do you want to go? (" + L.dl1 + " / " + L.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + L.dl1+ " or you could go back to " + L.pre_dl + ". Where do you want to go? (" + L.dl1 + " / " + L.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == L.dl1:
@@ -507,8 +555,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "M":
-        print("You can either enter door " + M.dl1+ " or you could go back to " + M.pre_dl + ". Where do you want to go? (" + M.dl1 + " / " + M.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + M.dl1+ " or you could go back to " + M.pre_dl + ". Where do you want to go? (" + M.dl1 + " / " + M.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == M.dl1:
@@ -522,8 +574,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "N":
-        print("You can either enter door " + N.dl1+ " or you could go back to " + N.pre_dl + ". Where do you want to go? (" + N.dl1 + " / " + N.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + N.dl1+ " or you could go back to " + N.pre_dl + ". Where do you want to go? (" + N.dl1 + " / " + N.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == N.dl1:
@@ -537,8 +593,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "O":
-        print("You can either enter door " + O.dl1+ " or door "+ O.dl2 + " or you could go back to " + O.pre_dl + ". Where do you want to go? (" + O.dl1 + " / " + O.dl2+ " / " + O.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + O.dl1+ " or door "+ O.dl2 + " or you could go back to " + O.pre_dl + ". Where do you want to go? (" + O.dl1 + " / " + O.dl2+ " / " + O.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == O.dl1:
@@ -556,8 +616,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "P":
-        print("You can either enter door " + P.dl1+ " or door "+ P.dl2 + " or you could go back to " + P.pre_dl + ". Where do you want to go? (" + P.dl1 + " / " + P.dl2+ " / " + P.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + P.dl1+ " or door "+ P.dl2 + " or you could go back to " + P.pre_dl + ". Where do you want to go? (" + P.dl1 + " / " + P.dl2+ " / " + P.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == P.dl1:
@@ -575,8 +639,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "Q":
-        print("You can either enter door " + Q.dl1+ " or door "+ Q.dl2 + " or you could go back to " + Q.pre_dl + ". Where do you want to go? (" + Q.dl1 + " / " + Q.dl2+ " / " + Q.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + Q.dl1+ " or door "+ Q.dl2 + " or you could go back to " + Q.pre_dl + ". Where do you want to go? (" + Q.dl1 + " / " + Q.dl2+ " / " + Q.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == Q.dl1:
@@ -594,8 +662,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "R":
-        print("You can either enter door " + R.dl1+ " or door "+ R.dl2 + " or you could go back to " + R.pre_dl + ". Where do you want to go? (" + R.dl1 + " / " + R.dl2+ " / " + R.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + R.dl1+ " or door "+ R.dl2 + " or you could go back to " + R.pre_dl + ". Where do you want to go? (" + R.dl1 + " / " + R.dl2+ " / " + R.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == R.dl1:
@@ -613,8 +685,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "S":
-        print("You can either enter door " + S.dl2 + " or you could go back to " + S.dl1 + ". Where do you want to go? (" + S.dl2+ " / " + S.dl1 + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + S.dl2 + " or you could go back to " + S.dl1 + ". Where do you want to go? (" + S.dl2+ " / " + S.dl1 + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == S.dl1:
@@ -628,8 +704,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "T":
-        print("You can either enter door " + T.dl2 + " or you could go back to " + T.dl1 + ". Where do you want to go? (" + T.dl2+ " / " + T.dl1 + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + T.dl2 + " or you could go back to " + T.dl1 + ". Where do you want to go? (" + T.dl2+ " / " + T.dl1 + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == T.dl1:
@@ -643,8 +723,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "U":
-        print("You can either enter door " + U.dl2 + " or you could go back to " + U.dl1 + ". Where do you want to go? (" + U.dl2+ " / " + U.dl1 + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + U.dl2 + " or you could go back to " + U.dl1 + ". Where do you want to go? (" + U.dl2+ " / " + U.dl1 + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == U.dl1:
@@ -658,8 +742,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "V":
-        print("You can either enter door " + V.dl2 + " or you could go back to " + V.dl1 + ". Where do you want to go? (" + V.dl2+ " / " + V.dl1 + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + V.dl2 + " or you could go back to " + V.dl1 + ". Where do you want to go? (" + V.dl2+ " / " + V.dl1 + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == V.dl1:
@@ -673,8 +761,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "W":
-        print("You can either enter door " + W.dl1+ " or door "+ W.dl2 + " or you could go back to " + W.pre_dl + ". Where do you want to go? (" + W.dl1 + " / " + W.dl2+ " / " + W.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + W.dl1+ " or door "+ W.dl2 + " or you could go back to " + W.pre_dl + ". Where do you want to go? (" + W.dl1 + " / " + W.dl2+ " / " + W.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == W.dl1:
@@ -692,8 +784,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "X":
-        print("You can either enter door " + X.dl1+ " or door "+ X.dl2 + " or you could go back to " + X.pre_dl + ". Where do you want to go? (" + X.dl1 + " / " + X.dl2+ " / " + X.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + X.dl1+ " or door "+ X.dl2 + " or you could go back to " + X.pre_dl + ". Where do you want to go? (" + X.dl1 + " / " + X.dl2+ " / " + X.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == X.dl1:
@@ -711,8 +807,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "Y":
-        print("You can either enter door " + Y.dl1+ " or door "+ Y.dl2 + " or you could go back to " + Y.pre_dl + ". Where do you want to go? (" + Y.dl1 + " / " + Y.dl2+ " / " + Y.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can either enter door " + Y.dl1+ " or door "+ Y.dl2 + " or you could go back to " + Y.pre_dl + ". Where do you want to go? (" + Y.dl1 + " / " + Y.dl2+ " / " + Y.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == Y.dl1:
@@ -730,8 +830,12 @@ def chooseRoom():
             else: 
                 print("Please enter a valid response.")
     elif char1.position == "Z":
-        print("You can can go back to " + Z.pre_dl + ". Where do you want to go? (" + Z.pre_dl + ")")
         room_counter = 0
+        if char1.health < 0:
+            print("\nUnfortunately you died while exploring the dungeon and fighting the enemies. Please restart the game.")
+            game_counter += 1
+            room_counter += 1
+        print("You can can go back to " + Z.pre_dl + ". Where do you want to go? (" + Z.pre_dl + ")")
         while room_counter < 1:
             roomChoose = input()
             if roomChoose == Z.pre_dl:
@@ -1047,10 +1151,8 @@ while game_counter < 1:
 
             loop_rooms()
             if char1.health <= 0:
-                print("Unfortunately your character died while exploring the dungeon.")
                 game_counter += 1
             elif endboss.health <= 0:
-                print("You defeated the infamous Lettered Dungeon and walk out into the rising sun.")
                 game_counter += 1
 
     else: 
