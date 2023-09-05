@@ -23,7 +23,7 @@ class enemy:
 class character:
     def __init__(self, name):
         self.name = name
-        self.health = int(50)
+        self.health = int(30)
         self.exp = int(0) 
         self.attack = int(2)
         self.defense = int(0) 
@@ -31,6 +31,7 @@ class character:
         self.offhand = "bare hand"
         self.ohbonus = int(0)
         self.defhand = "bare hand"
+        self.dhbonus = int(0)
         self.position = "Entry"
         self.prepos = []
 
@@ -177,17 +178,17 @@ def check_items(item_pos):
         
 
 
-#Fight-Funktion muss überarbeitet werden. Der Defense-Bonus von char und enemy muss noch eingebaut werden. 
+#Fight-Funktion muss überarbeitet werden. Der Defense-Bonus von char (defense + dhbonus) und enemy (armor) muss noch eingebaut werden. 
 def fight(fight_pos):
     global game_counter
     if fight_pos.monster != "none":
         print("You grab your Weapons and start the fight versus the " + str(fight_pos.monster) + ".\n")
         if fight_pos.monster == "Book Zombie":
             while bookzombie.health > 0 or char1.health > 0:
-                bookzombie.health -= (char1.attack + char1.ohbonus)
-                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage. It has " + str(bookzombie.health) + " hitpoints left.")
-                char1.health -= bookzombie.attack
-                print("You got hit by your enemy for " + str(bookzombie.attack) + " damage. You have " + str(char1.health) + " hitpoints left.")
+                bookzombie.health -= (char1.attack + char1.ohbonus - bookzombie.armor)
+                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage, which is decreased by the enemies armor (" + str(bookzombie.armor) + " armor). It has " + str(bookzombie.health) + " hitpoints left.")
+                char1.health -= (bookzombie.attack - (char1.defense + char1.dhbonus))
+                print("You got hit by your enemy for " + str(bookzombie.attack) + " damage, which is reduced by armor (" + str(char1.defense + char1.dhbonus) + " armor). You have " + str(char1.health) + " hitpoints left.")
                 if bookzombie.health <= 0:
                     print("\nYou won the fight versus the Book Zombie and earned " + str(bookzombie.expbonus) + " experience points.")
                     char1.exp += bookzombie.expbonus
@@ -200,10 +201,10 @@ def fight(fight_pos):
                     break
         elif fight_pos.monster == "Ink Vampire":
             while inkvampire.health > 0 or char1.health > 0:
-                inkvampire.health -= (char1.attack + char1.ohbonus)
-                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage. It has " + str(inkvampire.health) + " hitpoints left.")
-                char1.health -= inkvampire.attack
-                print("You got hit by your enemy for " + str(inkvampire.attack) + " damage. You have " + str(char1.health) + " hitpoints left.")
+                inkvampire.health -= (char1.attack + char1.ohbonus - inkvampire.armor)
+                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage, which is decreased by the enemies armor (" + str(inkvampire.armor) + " armor). It has " + str(inkvampire.health) + " hitpoints left.")
+                char1.health -= (inkvampire.attack - (char1.defense + char1.dhbonus))
+                print("You got hit by your enemy for " + str(inkvampire.attack) + " damage, which is reduced by armor (" + str(char1.defense + char1.dhbonus) + " armor). You have " + str(char1.health) + " hitpoints left.")
                 if inkvampire.health <= 0:
                     print("\nYou won the fight versus the Ink Vampire and earned " + str(inkvampire.expbonus) + " experience points.")
                     char1.exp += inkvampire.expbonus
@@ -216,10 +217,10 @@ def fight(fight_pos):
                     break
         elif fight_pos.monster == "Flying Scroll":
             while flyingscroll.health > 0 or char1.health > 0:
-                flyingscroll.health -= (char1.attack + char1.ohbonus)
-                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage. It has " + str(flyingscroll.health) + " hitpoints left.")
-                char1.health -= flyingscroll.attack
-                print("You got hit by your enemy for " + str(flyingscroll.attack) + " damage. You have " + str(char1.health) + " hitpoints left.")
+                flyingscroll.health -= (char1.attack + char1.ohbonus - flyingscroll.armor)
+                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage, which is decreased by the enemies armor (" + str(flyingscroll.armor) + " armor). It has " + str(flyingscroll.health) + " hitpoints left.")
+                char1.health -= (flyingscroll.attack - (char1.defense + char1.dhbonus))
+                print("You got hit by your enemy for " + str(flyingscroll.attack) + " damage, which is reduced by armor (" + str(char1.defense + char1.dhbonus) + " armor). You have " + str(char1.health) + " hitpoints left.")
                 if flyingscroll.health <= 0:
                     print("\nYou won the fight versus the Flying Scroll and earned " + str(flyingscroll.expbonus) + " experience points.")
                     char1.exp += flyingscroll.expbonus
@@ -232,10 +233,10 @@ def fight(fight_pos):
                     break
         elif fight_pos.monster == "Undead Student":
             while undeadstudent.health > 0 or char1.health > 0:
-                undeadstudent.health -= (char1.attack + char1.ohbonus)
-                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage. It has " + str(undeadstudent.health) + " hitpoints left.")
-                char1.health -= undeadstudent.attack
-                print("You got hit by your enemy for " + str(undeadstudent.attack) + " damage. You have " + str(char1.health) + " hitpoints left.")
+                undeadstudent.health -= (char1.attack + char1.ohbonus - undeadstudent.armor)
+                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage, which is decreased by the enemies armor (" + str(undeadstudent.armor) + " armor). It has " + str(undeadstudent.health) + " hitpoints left.")
+                char1.health -= (undeadstudent.attack - (char1.defense + char1.dhbonus))
+                print("You got hit by your enemy for " + str(undeadstudent.attack) + " damage, which is reduced by armor (" + str(char1.defense + char1.dhbonus) + " armor). You have " + str(char1.health) + " hitpoints left.")
                 if undeadstudent.health <= 0:
                     print("\nYou won the fight versus the Undead Student and earned " + str(undeadstudent.expbonus) + " experience points.")
                     char1.exp += undeadstudent.expbonus
@@ -248,10 +249,10 @@ def fight(fight_pos):
                     break
         elif fight_pos.monster == "Lettered Guardian":
             while endboss.health > 0 or char1.health > 0:
-                endboss.health -= (char1.attack + char1.ohbonus)
-                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage. It has " + str(endboss.health) + " hitpoints left.")
-                char1.health -= endboss.attack
-                print("You got hit by your enemy for " + str(endboss.attack) + " damage. You have " + str(char1.health) + " hitpoints left.")
+                endboss.health -= (char1.attack + char1.ohbonus - endboss.armor)
+                print("You hit your enemy for " + str(char1.attack + char1.ohbonus) + " damage, which is decreased by the enemies armor (" + str(endboss.armor) + " armor). It has " + str(endboss.health) + " hitpoints left.")
+                char1.health -= (endboss.attack - (char1.defense + char1.dhbonus))
+                print("You got hit by your enemy for " + str(endboss.attack) + " damage, which is reduced by armor (" + str(char1.defense + char1.dhbonus) + " armor). You have " + str(char1.health) + " hitpoints left.")
                 if endboss.health <= 0:
                     print("\nYou won the fight versus the Lettered Guardian and earned " + str(endboss.expbonus) + " experience points.")
                     char1.exp += endboss.expbonus
