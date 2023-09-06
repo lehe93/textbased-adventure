@@ -59,26 +59,26 @@ A = room("A", "none", "Book Zombie", "C", "D", "Entry")
 B = room("B", "red potion", "none", "E", "F", "Entry")
 C = room("C", "none", "Ink Vampire", "G", "H", "A")
 D = room("D", "blue potion", "Flying Scroll", "I", "J", "A")
-E = room("E", "none", "none", "K", "L", "B")
+E = room("E", "wooden shield", "none", "K", "L", "B")
 F = room("F", "rusty sword", "Flying Scroll", "M", "N", "B")
-G = room("G", "none", "Undead Student", "O", "none", "C")
+G = room("G", "iron shield", "Undead Student", "O", "none", "C")
 H = room("H", "none", "Ink Vampire", "O", "none", "C")
 I = room("I", "light axe", "Undead Student", "P", "none", "D")
 J = room("J", "rusty sword", "Book Zombie", "P", "none", "D")
 K = room("K", "none", "Book Zombie", "Q", "none", "E")
-L = room("L", "none", "Book Zombie", "Q", "none", "E")
+L = room("L", "iron shield", "Book Zombie", "Q", "none", "E")
 M = room("M", "silver sword", "Ink Vampire", "R", "none", "F")
 N = room("N", "stiff daggers", "Undead Student", "R", "none", "F")
 O = room("O", "blue potion", "Undead Student", "G", "H", "S")
 P = room("P", "red potion", "Flying Scroll", "I", "J", "T")
-Q = room("Q", "none", "Flying Scroll", "K", "L", "U")
+Q = room("Q", "wooden shield", "Flying Scroll", "K", "L", "U")
 R = room("R", "giant axe", "Ink Vampire", "M", "N", "V")
 S = room("S", "silver sword", "Ink Vampire", "O", "W", "none")
 T = room("T", "red potion", "none", "P", "W", "none")
-U = room("U", "none", "Undead Student", "Q", "X", "none")
+U = room("U", "tower shield", "Undead Student", "Q", "X", "none")
 V = room("V", "stiff daggers", "Book Zombie", "R", "X", "none")
 W = room("W", "brown potion", "none", "S", "T", "Y")
-X = room("X", "none", "ink vampire", "V", "U", "Y")
+X = room("X", "stretchy book shield", "ink vampire", "V", "U", "Y")
 Y = room("Y", "giant axe", "book zombie", "X", "W", "Z")
 Z = room("Z", "rusty sword", "Ink Vampire", "none", "none", "Y")
 
@@ -169,6 +169,26 @@ def check_items(item_pos):
                         char1.attack -= 4
                         char1.health -= 10
                         item_pos.items = "none"
+                    elif item_pos.items == "wooden shield":
+                        print("\n You take the wooden shield in your other hand and feel instantly safer.")
+                        char1.dhbonus += 1
+                        char1.defhand = "wooden shield"
+                        print("Your defense is increased by " + str(char1.dhbonus) + ".")
+                    elif item_pos.items == "iron shield":
+                        print("\n You take the iron shield in your other hand and feel instantly safer.")
+                        char1.dhbonus += 2
+                        char1.defhand = "iron shield"
+                        print("Your defense is increased by " + str(char1.dhbonus) + ".")
+                    elif item_pos.items == "tower shield":
+                        print("\n You take the gigantic and heavy tower shield in your other hand and feel instantly safer.")
+                        char1.dhbonus += 3
+                        char1.defhand = "tower shield"
+                        print("Your defense is increased by " + str(char1.dhbonus) + ".")
+                    elif item_pos.items == "stretchy book shield":
+                        print("\n You take the flexibel stretchy book shield in your other hand and feel instantly safer.")
+                        char1.dhbonus += 4
+                        char1.defhand = "stretchy book shield"
+                        print("Your defense is increased by " + str(char1.dhbonus) + ".")
                 elif choice == "N":
                     print("You let the " + item_pos.items + "in the room.")
                     select_counter += 1
