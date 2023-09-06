@@ -3,7 +3,7 @@
 
 Status:
 -
-The first version of my little game is playable! The game.py file can be executed in the terminal. However there are still some changes and some improvements to be made. Mainly adding some more items and ending the game, when the endboss is dead. After that i want to write less repetitive code. 
+The first version of my little game is playable! The game.py file can be executed in the terminal. The game includes various items and enemies which you fight, while exploring the infamous "Lettered Dungeon". 
 
 
 
