@@ -28,9 +28,9 @@ class character:
         self.attack = int(2)
         self.defense = int(0) 
         self.level = int(1) 
-        self.offhand = "bare hand"
+        self.offhand = "none"
         self.ohbonus = int(0)
-        self.defhand = "bare hand"
+        self.defhand = "none"
         self.dhbonus = int(0)
         self.position = "Entry"
         self.prepos = []
@@ -137,32 +137,32 @@ def check_items(item_pos):
                         print("\nYou change your weapons from " + char1.offhand + " to your new rusty sword.")
                         print("With your new weapon you gain additional 2 attack points.\n")
                         char1.ohbonus = 2
+                        item_pos.items = char1.offhand
                         char1.offhand = "rusty sword"
-                        item_pos.items = "none"
                     elif item_pos.items == "light axe":
                         print("\nYou change your weapons from " + char1.offhand + " to your new light axe.")
                         print("With your new weapon you gain additional 3 attack points.\n")
                         char1.ohbonus = 3
+                        item_pos.items = char1.offhand
                         char1.offhand = "light axe"
-                        item_pos.items = "none"
                     elif item_pos.items == "iron sword":
                         print("\nYou change your weapons from " + char1.offhand + " to your new iron sword.")
                         print("With your new weapon you gain additional 4 attack points.\n")
                         char1.ohbonus = 4
+                        item_pos.items = char1.offhand
                         char1.offhand = "iron sword"
-                        item_pos.items = "none"
                     elif item_pos.items == "stiff daggers":
                         print("\nYou change your weapons from " + char1.offhand + " to your new stiff daggers.")
                         print("With your new weapon you gain additional 3 attack points.\n")
                         char1.ohbonus = 3
+                        item_pos.items = char1.offhand
                         char1.offhand = "stiff daggers"
-                        item_pos.items = "none"
                     elif item_pos.items == "giant axe":
                         print("\nYou change your weapons from " + char1.offhand + " to your new giant axe.")
                         print("With your new weapon you gain additional 5 attack points.\n")
                         char1.ohbonus = 5
+                        item_pos.items = char1.offhand
                         char1.offhand = "giant axe"
-                        item_pos.items = "none"
                     elif item_pos.items == "brown potion":
                         print("\nAs you open the flask you smell the sweet flavor of chocolate and caramel. ")
                         print("You drink the brown potion and feel suddenly much weaker and poisoned. You loose 4 attack damage and 10 hit points.\n")
@@ -172,21 +172,25 @@ def check_items(item_pos):
                     elif item_pos.items == "wooden shield":
                         print("\n You take the wooden shield in your other hand and feel instantly safer.")
                         char1.dhbonus += 1
+                        item_pos.items = char1.defhand
                         char1.defhand = "wooden shield"
                         print("Your defense is increased by " + str(char1.dhbonus) + ".")
                     elif item_pos.items == "iron shield":
                         print("\n You take the iron shield in your other hand and feel instantly safer.")
                         char1.dhbonus += 2
+                        item_pos.items = char1.defhand
                         char1.defhand = "iron shield"
                         print("Your defense is increased by " + str(char1.dhbonus) + ".")
                     elif item_pos.items == "tower shield":
                         print("\n You take the gigantic and heavy tower shield in your other hand and feel instantly safer.")
-                        char1.dhbonus += 3
+                        char1.dhbonus += 4
+                        item_pos.items = char1.defhand
                         char1.defhand = "tower shield"
                         print("Your defense is increased by " + str(char1.dhbonus) + ".")
                     elif item_pos.items == "stretchy book shield":
                         print("\n You take the flexibel stretchy book shield in your other hand and feel instantly safer.")
-                        char1.dhbonus += 4
+                        char1.dhbonus += 3
+                        item_pos.items = char1.defhand
                         char1.defhand = "stretchy book shield"
                         print("Your defense is increased by " + str(char1.dhbonus) + ".")
                 elif choice == "N":
