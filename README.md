@@ -3,7 +3,8 @@
 
 Status:
 -
-The first version of my little game is playable! The game.py file can be executed in the terminal. The game includes various items and enemies which you fight, while exploring the infamous "Lettered Dungeon". 
+My little game is playable! The game.py file can be executed in the terminal. The game includes various items and enemies which you fight, while exploring the infamous "Lettered Dungeon". 
+If you want to test/play it, just download the "game.py" file and start it in your terminal. Please make sure to have Python3 installed. (https://www.python.org/downloads/)
 
 
 
