@@ -8,7 +8,7 @@ If you want to test/play it, just download the "game.py" file and start it in yo
 
 
 
-To-Dos:
+Wants:
 -
 - Navigation through all rooms with commands (stopped in order to finish a first, playable version without to much commands.)
 - Further commands for a more individual gaming experience (e.g. like checkPosition, changeRoom, fight, runAway, hide, steal)
